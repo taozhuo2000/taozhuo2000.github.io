@@ -1,0 +1,13 @@
+{% assign news_lang = include.lang | default: page.lang | default: site.default_locale %}
+{% assign news_items = site.news | where: "lang", news_lang | sort: "date" | reverse %}
+{% if include.limit %}
+  {% assign news_items = news_items | slice: 0, include.limit %}
+{% endif %}
+<ul class="news-list">
+  {% for news_item in news_items %}
+    <li>
+      <span class="news-list__date">{{ news_item.date | date: "%Y-%m" }}</span>
+      <span class="news-list__content">{{ news_item.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</span>
+    </li>
+  {% endfor %}
+</ul>

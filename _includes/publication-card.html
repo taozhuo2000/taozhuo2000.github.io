@@ -1,0 +1,13 @@
+{% assign card_lang = include.lang | default: page.lang | default: site.default_locale %}
+<article class="publication-card">
+  <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+  {% if post.authors %}<p class="publication-authors">{{ post.authors }}</p>{% endif %}
+  <p class="publication-venue">{{ post.venue }}, {{ post.date | date: "%Y" }}{% if post.note %} · {{ post.note }}{% endif %}</p>
+  {% if post.summary %}<div class="publication-summary">{{ post.summary | markdownify }}</div>{% endif %}
+  <div class="publication-links">
+    <a href="{{ post.url | relative_url }}">{% if card_lang == 'zh' %}详情{% else %}Details{% endif %}</a>
+    {% if post.paperurl %}<a href="{{ post.paperurl }}">{% if card_lang == 'zh' %}论文{% else %}Paper{% endif %}</a>{% endif %}
+    {% if post.doiurl %}<a href="{{ post.doiurl }}">DOI</a>{% endif %}
+    {% if post.codeurl %}<a href="{{ post.codeurl }}">Code</a>{% endif %}
+  </div>
+</article>

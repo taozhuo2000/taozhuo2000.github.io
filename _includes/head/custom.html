@@ -19,4 +19,14 @@
 <link rel="icon" href="/images/favicon.ico"/>
 <meta name="theme-color" content="var(--global-bg-color)"/>
 
+{% if page.alternate_url %}
+  {% if page.lang == 'zh' %}
+    <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.alternate_url }}" />
+    <link rel="alternate" hreflang="zh-CN" href="{{ site.url }}{{ page.url }}" />
+  {% else %}
+    <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.url }}" />
+    <link rel="alternate" hreflang="zh-CN" href="{{ site.url }}{{ page.alternate_url }}" />
+  {% endif %}
+{% endif %}
+
 <!-- end custom head snippets -->

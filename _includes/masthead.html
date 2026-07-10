@@ -1,28 +1,58 @@
 {% include base_path %}
+{% assign current_lang = page.lang | default: site.default_locale %}
+{% if current_lang == 'zh' %}
+  {% assign nav_items = site.data.navigation.zh %}
+  {% assign home_url = '/zh/' %}
+  {% assign site_display_title = site.title_zh %}
+{% else %}
+  {% assign nav_items = site.data.navigation.main %}
+  {% assign home_url = '/' %}
+  {% assign site_display_title = site.title %}
+{% endif %}
+
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <button><span class="navicon"></span></button>
+        <button class="hidden"
+                aria-label="{% if current_lang == 'zh' %}打开导航菜单{% else %}Open navigation menu{% endif %}"
+                aria-expanded="false"
+                aria-controls="site-nav-menu"
+                data-open-label="{% if current_lang == 'zh' %}打开导航菜单{% else %}Open navigation menu{% endif %}"
+                data-close-label="{% if current_lang == 'zh' %}关闭导航菜单{% else %}Close navigation menu{% endif %}">
+          <span class="navicon"></span>
+        </button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist {% if page.url == '/' or page.url == '/index.html' %}selected{% endif %}">
-            <a href="{{ base_path }}/">{{ site.title }}</a>
+          <li class="masthead__menu-item masthead__menu-item--lg persist {% if page.url == home_url %}selected{% endif %}">
+            <a href="{{ base_path }}{{ home_url }}">{{ site_display_title }}</a>
           </li>
-          {% for link in site.data.navigation.main %}
+          {% for link in nav_items %}
             {% if link.url contains 'http' %}
               {% assign domain = '' %}
             {% else %}
               {% assign domain = base_path %}
             {% endif %}
-            <li class="masthead__menu-item {% if page.url contains link.url and link.url != '/' %}selected{% endif %}">
+            <li class="masthead__menu-item nav-primary persist {% if page.url == link.url %}selected{% endif %}">
               <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
             </li>
           {% endfor %}
+          <li class="masthead__menu-item language-menu persist">{% include language-switcher.html %}</li>
           <li id="theme-toggle" class="masthead__menu-item persist tail">
             <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
           </li>
         </ul>
-        <ul class="hidden-links hidden"></ul>
+        <ul id="site-nav-menu" class="hidden-links hidden">
+          {% for link in nav_items %}
+            {% if link.url contains 'http' %}
+              {% assign domain = '' %}
+            {% else %}
+              {% assign domain = base_path %}
+            {% endif %}
+            <li class="masthead__menu-item {% if page.url == link.url %}selected{% endif %}">
+              <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
       </nav>
     </div>
   </div>

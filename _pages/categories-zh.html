@@ -1,0 +1,22 @@
+---
+layout: archive
+permalink: /zh/categories/
+title: "博客分类"
+lang: zh
+alternate_url: /categories/
+author_profile: true
+---
+
+按分类浏览中文博客文章。
+
+{% for category in site.categories %}
+  {% assign category_posts = category[1] | where: "lang", "zh" %}
+  {% if category_posts.size > 0 %}
+    <h2 id="{{ category[0] | slugify }}">{{ category[0] }}</h2>
+    <div class="blog-card-grid">
+      {% for post in category_posts %}
+        {% include blog-card.html post=post lang="zh" %}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endfor %}

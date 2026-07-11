@@ -16,6 +16,9 @@ package-lock.json
 /vendor/
 .bundle/
 
+# Ignore temporary research and document-processing artifacts
+/tmp/
+
 # Ignore folders related to IDEs
 .vscode/
 

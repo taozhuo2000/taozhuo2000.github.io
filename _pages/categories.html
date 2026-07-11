@@ -1,0 +1,22 @@
+---
+layout: archive
+permalink: /categories/
+title: "Blog Categories"
+lang: en
+alternate_url: /zh/categories/
+author_profile: true
+---
+
+Browse English blog posts by category.
+
+{% for category in site.categories %}
+  {% assign category_posts = category[1] | where: "lang", "en" %}
+  {% if category_posts.size > 0 %}
+    <h2 id="{{ category[0] | slugify }}">{{ category[0] }}</h2>
+    <div class="blog-card-grid">
+      {% for post in category_posts %}
+        {% include blog-card.html post=post lang="en" %}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endfor %}

@@ -31,8 +31,8 @@ author:
   name             : "Zhuo Tao"
   name_zh          : "陶卓"
   pronouns         : # example: "she/her"  
-  bio              : "Ph.D. Student in Multimodal AI and Intelligent Agents"
-  bio_zh           : "多模态智能与智能体方向博士研究生"
+  bio              : "Ph.D. Student | Multimodal Learning, LLMs, and Agents"
+  bio_zh           : "博士研究生｜多模态学习、大语言模型与智能体"
   location         : "Beijing, China"
   location_zh      : "中国，北京"
   employer         : "ICT, Chinese Academy of Sciences"
@@ -259,7 +259,7 @@ defaults:
       read_time: true
       comments: false
       share: false
-      related: true
+      related: false
       pagination: false
   # _pages
   - scope:

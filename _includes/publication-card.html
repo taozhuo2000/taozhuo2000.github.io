@@ -8,6 +8,7 @@
     <a href="{{ post.url | relative_url }}">{% if card_lang == 'zh' %}详情{% else %}Details{% endif %}</a>
     {% if post.paperurl %}<a href="{{ post.paperurl }}">{% if card_lang == 'zh' %}论文{% else %}Paper{% endif %}</a>{% endif %}
     {% if post.doiurl %}<a href="{{ post.doiurl }}">DOI</a>{% endif %}
+    {% if post.blogurl %}<a href="{{ post.blogurl | relative_url }}">{% if card_lang == 'zh' %}论文导读{% else %}Research note{% endif %}</a>{% endif %}
     {% if post.codeurl %}<a href="{{ post.codeurl }}">Code</a>{% endif %}
   </div>
 </article>

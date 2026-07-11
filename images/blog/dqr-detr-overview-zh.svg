@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">DQR-DETR 概念流程图</title>
+  <desc id="desc">原创示意图，展示视频和句子输入、层次化查询解耦、语义筛选、由粗到细重校准以及时间边界输出。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#eef6f7"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#15344a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#456477"/>
+    </marker>
+    <style>
+      .font { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .label { fill: #173247; font-size: 24px; font-weight: 700; }
+      .small { fill: #527084; font-size: 18px; }
+      .tiny { fill: #698394; font-size: 15px; }
+      .step { fill: #173247; font-size: 18px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="675" rx="34" fill="url(#bg)"/>
+  <circle cx="1115" cy="70" r="120" fill="#d9eeea" opacity="0.52"/>
+  <circle cx="75" cy="630" r="130" fill="#dce8fb" opacity="0.55"/>
+
+  <g class="font">
+    <text x="58" y="68" fill="#102f43" font-size="38" font-weight="800">DQR-DETR</text>
+    <text x="58" y="101" fill="#547286" font-size="20">面向分布外视频时序定位的动态时刻查询</text>
+    <rect x="985" y="53" width="157" height="40" rx="20" fill="#ffffff" stroke="#bfd2dc"/>
+    <text x="1064" y="79" text-anchor="middle" fill="#365b70" font-size="16" font-weight="700">概念示意图</text>
+
+    <g filter="url(#shadow)">
+      <rect x="50" y="150" width="218" height="370" rx="24" fill="#ffffff" stroke="#d5e3e9"/>
+    </g>
+    <text x="159" y="188" text-anchor="middle" class="label">当前样本</text>
+
+    <rect x="78" y="216" width="162" height="92" rx="14" fill="#e9f1fa" stroke="#b9cfe5"/>
+    <rect x="91" y="230" width="38" height="64" rx="6" fill="#84aeca"/>
+    <rect x="140" y="230" width="38" height="64" rx="6" fill="#4e819f"/>
+    <rect x="189" y="230" width="38" height="64" rx="6" fill="#b5d0df"/>
+    <path d="M151 248 l17 14 -17 14z" fill="#ffffff" opacity="0.9"/>
+    <text x="159" y="331" text-anchor="middle" class="small" font-weight="700">未裁剪视频</text>
+
+    <rect x="78" y="360" width="162" height="92" rx="14" fill="#ecf8f5" stroke="#b9ded6"/>
+    <path d="M98 383 h122 M98 402 h94 M98 421 h108" stroke="#4f857d" stroke-width="7" stroke-linecap="round" opacity="0.72"/>
+    <text x="159" y="478" text-anchor="middle" class="small" font-weight="700">自然语言查询</text>
+
+    <path d="M276 335 H322" stroke="#456477" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)">
+      <rect x="325" y="150" width="550" height="370" rx="24" fill="#ffffff" stroke="#d5e3e9"/>
+    </g>
+    <text x="600" y="188" text-anchor="middle" class="label">自适应查询流程</text>
+    <text x="600" y="216" text-anchor="middle" class="tiny">根据当前视频和句子构造候选，而不只依赖固定可学习模式</text>
+
+    <rect x="350" y="246" width="150" height="188" rx="18" fill="#eaf3ff" stroke="#aec8ea"/>
+    <circle cx="375" cy="273" r="13" fill="#2563eb"/>
+    <text x="425" y="280" text-anchor="middle" fill="#2563eb" font-size="16" font-weight="800">步骤 1</text>
+    <text x="425" y="323" text-anchor="middle" class="step">
+      <tspan x="425">层次化</tspan>
+      <tspan x="425" dy="26">查询解耦</tspan>
+    </text>
+    <path d="M377 373 h96" stroke="#7794b6" stroke-width="3"/>
+    <circle cx="389" cy="373" r="10" fill="#9ac1ef"/>
+    <circle cx="421" cy="373" r="14" fill="#5595e8"/>
+    <circle cx="460" cy="373" r="8" fill="#bed7f5"/>
+    <text x="425" y="410" text-anchor="middle" class="tiny">多尺度事件查询</text>
+
+    <path d="M507 340 H532" stroke="#456477" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="535" y="246" width="130" height="188" rx="18" fill="#ecf8f5" stroke="#a8d8ce"/>
+    <circle cx="560" cy="273" r="13" fill="#0f766e"/>
+    <text x="600" y="280" text-anchor="middle" fill="#0f766e" font-size="16" font-weight="800">步骤 2</text>
+    <text x="600" y="323" text-anchor="middle" class="step">
+      <tspan x="600">句子语义</tspan>
+      <tspan x="600" dy="26">筛选</tspan>
+    </text>
+    <circle cx="566" cy="375" r="9" fill="#acd6ce"/>
+    <circle cx="600" cy="375" r="14" fill="#0f766e"/>
+    <circle cx="634" cy="375" r="9" fill="#acd6ce"/>
+    <path d="M582 398 l18 14 28 -32" fill="none" stroke="#0f766e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="600" y="429" text-anchor="middle" class="tiny">句子感知查询</text>
+
+    <path d="M672 340 H697" stroke="#456477" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="700" y="246" width="150" height="188" rx="18" fill="#fff5df" stroke="#e9cd8e"/>
+    <circle cx="725" cy="273" r="13" fill="#d28a16"/>
+    <text x="775" y="280" text-anchor="middle" fill="#b86f08" font-size="16" font-weight="800">步骤 3</text>
+    <text x="775" y="323" text-anchor="middle" class="step">
+      <tspan x="775">由粗到细</tspan>
+      <tspan x="775" dy="26">查询重校准</tspan>
+    </text>
+    <rect x="724" y="368" width="102" height="20" rx="10" fill="#f1d8a7"/>
+    <rect x="747" y="368" width="48" height="20" rx="10" fill="#d28a16"/>
+    <path d="M739 406 H811" stroke="#d28a16" stroke-width="4" stroke-linecap="round"/>
+    <text x="775" y="429" text-anchor="middle" fill="#698394" font-size="13">视频引导 → 句子引导</text>
+
+    <rect x="365" y="462" width="470" height="38" rx="19" fill="#f6f9fb" stroke="#9db8c7" stroke-dasharray="7 6"/>
+    <text x="600" y="487" text-anchor="middle" fill="#48687a" font-size="16" font-weight="700">渐进语义正则 · 全局与细粒度跨模态对齐</text>
+
+    <path d="M883 335 H923" stroke="#456477" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)">
+      <rect x="926" y="150" width="224" height="370" rx="24" fill="#ffffff" stroke="#d5e3e9"/>
+    </g>
+    <text x="1038" y="188" text-anchor="middle" class="label">目标时刻</text>
+    <text x="1038" y="215" text-anchor="middle" class="tiny">预测开始与结束边界</text>
+
+    <rect x="958" y="252" width="160" height="112" rx="16" fill="#eef3f6" stroke="#cad9e0"/>
+    <rect x="970" y="266" width="30" height="84" rx="5" fill="#b6cbd6"/>
+    <rect x="1006" y="266" width="30" height="84" rx="5" fill="#5f98a3"/>
+    <rect x="1042" y="266" width="30" height="84" rx="5" fill="#2c7379"/>
+    <rect x="1078" y="266" width="28" height="84" rx="5" fill="#9abac5"/>
+
+    <path d="M965 410 H1112" stroke="#7892a1" stroke-width="5" stroke-linecap="round"/>
+    <path d="M1000 410 H1074" stroke="url(#accent)" stroke-width="13" stroke-linecap="round"/>
+    <circle cx="1000" cy="410" r="8" fill="#2563eb"/>
+    <circle cx="1074" cy="410" r="8" fill="#0f766e"/>
+    <text x="1000" y="445" text-anchor="middle" class="tiny">开始</text>
+    <text x="1074" y="445" text-anchor="middle" class="tiny">结束</text>
+    <rect x="970" y="472" width="136" height="28" rx="14" fill="#e5f4f1"/>
+    <text x="1038" y="492" text-anchor="middle" fill="#0f766e" font-size="15" font-weight="800">自适应边界</text>
+
+    <text x="600" y="594" text-anchor="middle" fill="#274b60" font-size="22" font-weight="700">广泛生成 · 语义筛选 · 精确细化</text>
+    <text x="600" y="628" text-anchor="middle" class="tiny">原创讲解图 · 非实验结果图</text>
+  </g>
+</svg>

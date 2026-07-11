@@ -29,6 +29,56 @@
   }());
 </script>
 
+<script>
+  (function () {
+    var themeButton = document.querySelector('.theme-toggle__button');
+    var root = document.documentElement;
+    var icon = document.getElementById('theme-icon');
+
+    if (!themeButton || !root) return;
+
+    function applyTheme(theme) {
+      var useDark = theme === 'dark';
+      if (useDark) {
+        root.setAttribute('data-theme', 'dark');
+      } else {
+        root.removeAttribute('data-theme');
+      }
+      if (icon) {
+        icon.classList.toggle('fa-sun', !useDark);
+        icon.classList.toggle('fa-moon', useDark);
+      }
+    }
+
+    var storedTheme = null;
+    try {
+      storedTheme = window.localStorage.getItem('theme');
+    } catch (error) {
+      storedTheme = null;
+    }
+
+    if (storedTheme === 'dark' || storedTheme === 'light') {
+      applyTheme(storedTheme);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      applyTheme('dark');
+    }
+
+    themeButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
+      var nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      try {
+        window.localStorage.setItem('theme', nextTheme);
+      } catch (error) {
+        // Theme switching still works for this page when storage is unavailable.
+      }
+      applyTheme(nextTheme);
+    });
+  }());
+</script>
+
 {% include analytics.html %}
 
 {% include comments-providers/scripts.html %}

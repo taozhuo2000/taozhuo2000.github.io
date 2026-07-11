@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">QACap 观察与知识分离示意图</title>
+  <desc id="desc">图像和问题输入 QACap，生成问题感知的视觉证据；跨过证据边界后，大语言模型结合知识与推理产生答案。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#f4f7fb"/>
+    </linearGradient>
+    <linearGradient id="vision" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dbeafe"/>
+      <stop offset="1" stop-color="#bfdbfe"/>
+    </linearGradient>
+    <linearGradient id="reason" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dcfce7"/>
+      <stop offset="1" stop-color="#bbf7d0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.09"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" rx="30" fill="url(#bg)"/>
+  <circle cx="1135" cy="54" r="105" fill="#dbeafe" opacity="0.45"/>
+  <circle cx="55" cy="590" r="120" fill="#dcfce7" opacity="0.35"/>
+
+  <text x="60" y="67" fill="#0f172a" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="32" font-weight="750">让视觉负责观察，让大模型负责思考</text>
+  <text x="60" y="105" fill="#475569" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="18">QACap 在感知与知识之间建立问题感知、可检查的文字接口。</text>
+
+  <text x="52" y="158" fill="#64748b" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">输入</text>
+  <g filter="url(#shadow)">
+    <rect x="50" y="178" width="200" height="274" rx="22" fill="#ffffff" stroke="#d7e0eb"/>
+  </g>
+  <rect x="68" y="198" width="164" height="112" rx="14" fill="#dbeafe"/>
+  <circle cx="195" cy="224" r="15" fill="#fbbf24"/>
+  <path d="M68 285 L112 247 L145 271 L174 238 L232 294 L232 310 L68 310 Z" fill="#60a5fa"/>
+  <path d="M68 292 L112 259 L145 280 L174 249 L232 301 L232 310 L68 310 Z" fill="#2563eb" opacity="0.72"/>
+  <rect x="68" y="329" width="164" height="98" rx="14" fill="#fff7ed" stroke="#fed7aa"/>
+  <circle cx="90" cy="351" r="10" fill="none" stroke="#ea580c" stroke-width="3"/>
+  <path d="M84 358 L78 372 L93 364" fill="none" stroke="#ea580c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="108" y="356" fill="#9a3412" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="13" font-weight="700">问题</text>
+  <text x="82" y="388" fill="#334155" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="14">当前任务究竟需要</text>
+  <text x="82" y="410" fill="#334155" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="14">哪些视觉细节？</text>
+
+  <path d="M258 315 H292" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+
+  <text x="300" y="158" fill="#2563eb" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">观察</text>
+  <g filter="url(#shadow)">
+    <rect x="300" y="178" width="210" height="274" rx="22" fill="url(#vision)" stroke="#93c5fd"/>
+  </g>
+  <circle cx="405" cy="251" r="43" fill="#ffffff" opacity="0.86"/>
+  <path d="M366 251 C384 224 426 224 444 251 C426 278 384 278 366 251 Z" fill="none" stroke="#2563eb" stroke-width="5"/>
+  <circle cx="405" cy="251" r="14" fill="#2563eb"/>
+  <text x="405" y="322" text-anchor="middle" fill="#1e3a8a" font-family="Inter, 'PingFang SC', sans-serif" font-size="24" font-weight="800">QACap</text>
+  <text x="405" y="351" text-anchor="middle" fill="#1e40af" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="14" font-weight="700">问题感知的视觉关注</text>
+  <text x="405" y="382" text-anchor="middle" fill="#334155" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="14">聚焦相关区域</text>
+  <text x="405" y="405" text-anchor="middle" fill="#334155" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="14">描述可观察内容</text>
+
+  <path d="M518 315 H546" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+
+  <text x="554" y="158" fill="#2563eb" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">视觉证据</text>
+  <g filter="url(#shadow)">
+    <rect x="554" y="178" width="232" height="274" rx="22" fill="#ffffff" stroke="#bfdbfe"/>
+  </g>
+  <rect x="579" y="207" width="182" height="62" rx="12" fill="#eff6ff"/>
+  <path d="M600 224 H739 M600 239 H724 M600 254 H694" stroke="#60a5fa" stroke-width="5" stroke-linecap="round"/>
+  <text x="579" y="308" fill="#1e3a8a" font-family="'PingFang SC', 'Microsoft YaHei', serif" font-size="17">“男孩手中拿着一只</text>
+  <text x="579" y="334" fill="#1e3a8a" font-family="'PingFang SC', 'Microsoft YaHei', serif" font-size="17">毛绒玩具。”</text>
+  <line x1="579" y1="361" x2="761" y2="361" stroke="#dbeafe" stroke-width="2"/>
+  <text x="579" y="392" fill="#475569" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="13" font-weight="700">可观察的上下文</text>
+  <text x="579" y="416" fill="#64748b" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="13">可阅读、可检查</text>
+
+  <line x1="810" y1="147" x2="810" y2="474" stroke="#f59e0b" stroke-width="3" stroke-dasharray="9 9"/>
+  <rect x="793" y="151" width="34" height="126" rx="17" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="815" y="262" transform="rotate(-90 815 262)" fill="#b45309" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="13" font-weight="800" letter-spacing="0.8">视觉证据边界</text>
+
+  <path d="M830 315 H850" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+
+  <text x="852" y="158" fill="#15803d" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">知识与推理</text>
+  <g filter="url(#shadow)">
+    <rect x="852" y="178" width="210" height="274" rx="22" fill="url(#reason)" stroke="#86efac"/>
+  </g>
+  <circle cx="957" cy="247" r="45" fill="#ffffff" opacity="0.88"/>
+  <circle cx="936" cy="238" r="7" fill="#16a34a"/>
+  <circle cx="960" cy="222" r="7" fill="#16a34a"/>
+  <circle cx="980" cy="246" r="7" fill="#16a34a"/>
+  <circle cx="953" cy="270" r="7" fill="#16a34a"/>
+  <path d="M942 234 L954 226 M966 227 L976 240 M976 252 L959 266 M946 264 L938 245 M943 239 L973 246 M959 229 L954 263" stroke="#16a34a" stroke-width="3" fill="none"/>
+  <text x="957" y="322" text-anchor="middle" fill="#14532d" font-family="Inter, 'PingFang SC', sans-serif" font-size="24" font-weight="800">LLM</text>
+  <text x="957" y="351" text-anchor="middle" fill="#166534" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="14" font-weight="700">现成大语言模型</text>
+  <text x="957" y="382" text-anchor="middle" fill="#334155" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="14">将视觉证据与</text>
+  <text x="957" y="405" text-anchor="middle" fill="#334155" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="14">世界知识结合</text>
+
+  <path d="M1070 315 H1088" stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="1090" y="237" width="88" height="156" rx="20" fill="#0f172a"/>
+  </g>
+  <circle cx="1134" cy="278" r="21" fill="#22c55e"/>
+  <path d="M1124 278 L1131 285 L1145 270" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1134" y="332" text-anchor="middle" fill="#ffffff" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="15" font-weight="800">答案</text>
+  <text x="1134" y="359" text-anchor="middle" fill="#cbd5e1" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="13">结合知识</text>
+  <text x="1134" y="378" text-anchor="middle" fill="#cbd5e1" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="13">完成推理</text>
+
+  <rect x="300" y="508" width="762" height="72" rx="18" fill="#fff7ed" stroke="#fdba74"/>
+  <circle cx="338" cy="544" r="18" fill="#f59e0b"/>
+  <path d="M338 532 V547 M338 557 V558" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <text x="372" y="537" fill="#9a3412" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="15" font-weight="800">设计目标</text>
+  <text x="372" y="561" fill="#7c2d12" font-family="'PingFang SC', 'Microsoft YaHei', Inter, sans-serif" font-size="15">报告与问题相关的可观察证据，而不是在 caption 中悄悄推断答案。</text>
+</svg>

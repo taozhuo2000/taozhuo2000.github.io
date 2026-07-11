@@ -15,14 +15,15 @@ Education
 **Institute of Computing Technology, Chinese Academy of Sciences**<br>
 Ph.D. Student in Computer Science and Technology, Sep. 2022 - Present (expected 2028)
 
-- GPA: 3.81/4.0, top 5%
 - Key Laboratory of Intelligent Information Processing
-- Graduate Academic Scholarship, University of Chinese Academy of Sciences, 2022-2025
 
 **Beihang University**<br>
 B.Eng. in Computer Science and Technology, Sep. 2018 - Jun. 2022
 
-- GPA: 3.84/4.0, top 10%
+Research Profile
+======
+
+My research spans multimodal reasoning, vision-language understanding, and video temporal localization. My published work includes question-aware captioning for knowledge-based visual question answering (QACap), collaborative temporal consistency learning from point supervision (COTEL), and dynamic moment-query recalibration for out-of-distribution temporal localization (DQR-DETR). My broader interests include large language models, autonomous agents, reinforcement learning, and multimodal post-training.
 
 Research Interests
 ======
@@ -31,6 +32,15 @@ Research Interests
 - Autonomous Agents and Agentic Reinforcement Learning
 - Multimodal Understanding, Reasoning, and Post-training
 - Video Understanding and Temporal Localization
+
+Selected Project
+======
+
+**Knowledge-Graph-Assisted Image Retrieval System**, Oct. 2023 - Apr. 2024
+
+- Built a two-path retrieval pipeline combining global visual matching with person-centric search for film stills and historical-event imagery.
+- Used ResNet-50, Faiss, and HNSW for scalable retrieval, together with YuNet and SFace for face detection and identity matching.
+- Connected retrieval results with video segments, actor information, and one-hop knowledge-graph relations to provide additional semantic context and interpretability.
 
 Publications
 ======
@@ -43,9 +53,9 @@ Publications
 Technical Skills
 ======
 
-- **Programming and ML:** Python, PyTorch
-- **Training and Inference:** DeepSpeed, vLLM, verl, distributed training, model post-training, and inference optimization
-- **Research:** literature review, method reproduction, experimental design, result analysis, and academic writing
+- **Programming and machine learning:** experience with Python and PyTorch
+- **Training and inference:** experience with DeepSpeed, vLLM, verl, distributed training, model post-training, and inference optimization
+- **Research workflow:** literature review, method reproduction, experimental design, result analysis, and academic writing
 
 Honors and Awards
 ======

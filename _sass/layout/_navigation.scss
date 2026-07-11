@@ -189,7 +189,7 @@
     }
   }
 
-  button {
+  > button {
     position: absolute;
     height: 2.5rem;
     right: 0;
@@ -226,8 +226,7 @@
     }
 
     #theme-toggle {
-      a {
-        width: 25px;
+      .theme-toggle__button {
         display: flex;
         justify-content: center;
         cursor: pointer;

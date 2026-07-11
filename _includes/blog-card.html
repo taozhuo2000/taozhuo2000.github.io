@@ -1,0 +1,28 @@
+{% assign blog_post = include.post %}
+{% assign blog_lang = include.lang | default: page.lang | default: site.default_locale %}
+{% assign teaser_src = blog_post.header.teaser %}
+{% unless teaser_src contains '://' %}
+  {% assign teaser_src = teaser_src | relative_url %}
+{% endunless %}
+<article class="blog-card">
+  {% if blog_post.header.teaser %}
+    <a class="blog-card__image" href="{{ blog_post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+      <img src="{{ teaser_src }}"
+           alt="{{ blog_post.teaser_alt | default: blog_post.title }}"
+           loading="lazy" />
+    </a>
+  {% endif %}
+  <div class="blog-card__body">
+    <p class="blog-card__meta">
+      <time datetime="{{ blog_post.date | date_to_xmlschema }}">
+        {% if blog_lang == 'zh' %}{{ blog_post.date | date: "%Y 年 %m 月 %d 日" }}{% else %}{{ blog_post.date | date: "%B %d, %Y" }}{% endif %}
+      </time>
+      {% if blog_post.categories.first %}<span aria-hidden="true">·</span> {{ blog_post.categories.first | replace: '-', ' ' }}{% endif %}
+    </p>
+    <h3><a href="{{ blog_post.url | relative_url }}">{{ blog_post.title }}</a></h3>
+    {% if blog_post.excerpt %}<p class="blog-card__excerpt">{{ blog_post.excerpt | markdownify | strip_html | strip_newlines }}</p>{% endif %}
+    <a class="blog-card__link" href="{{ blog_post.url | relative_url }}">
+      {% if blog_lang == 'zh' %}阅读全文 →{% else %}Read article →{% endif %}
+    </a>
+  </div>
+</article>

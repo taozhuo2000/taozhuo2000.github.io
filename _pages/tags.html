@@ -1,0 +1,22 @@
+---
+layout: archive
+permalink: /tags/
+title: "Blog Tags"
+lang: en
+alternate_url: /zh/tags/
+author_profile: true
+---
+
+Browse English blog posts by topic.
+
+{% for tag in site.tags %}
+  {% assign tag_posts = tag[1] | where: "lang", "en" %}
+  {% if tag_posts.size > 0 %}
+    <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
+    <ul>
+      {% for post in tag_posts %}
+        <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <small>({{ post.date | date: "%Y-%m-%d" }})</small></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endfor %}

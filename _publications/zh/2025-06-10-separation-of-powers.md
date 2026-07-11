@@ -4,6 +4,7 @@ collection: publications
 category: conferences
 lang: zh
 selected: true
+equal_contribution: true
 permalink: /zh/publication/2025-separation-of-powers/
 alternate_url: /publication/2025-separation-of-powers/
 date: 2025-06-10
@@ -13,6 +14,7 @@ note: "* 共同一作"
 summary: "通过问题感知图像描述，将视觉观察与知识推理进行解耦，提升大语言模型驱动的知识型视觉问答能力。"
 paperurl: "https://openaccess.thecvf.com/content/CVPR2025/papers/Yang_Separation_of_Powers_On_Segregating_Knowledge_from_Observation_in_LLM-enabled_CVPR_2025_paper.pdf"
 doiurl: "https://doi.org/10.1109/CVPR52734.2025.02305"
+blogurl: "/zh/blog/qacap-explained/"
 citation: 'Zhen Yang*, <strong>Zhuo Tao*</strong>, Qi Chen, Liang Li, Yuankai Qi, Anton van den Hengel, and Qingming Huang. &quot;Separation of Powers: On Segregating Knowledge from Observation in LLM-enabled Knowledge-based Visual Question Answering.&quot; <i>CVPR</i>, 2025.'
 ---
 
@@ -22,6 +24,7 @@ citation: 'Zhen Yang*, <strong>Zhuo Tao*</strong>, Qi Chen, Liang Li, Yuankai Qi
   <div class="publication-links">
     <a href="{{ page.paperurl }}">论文</a>
     <a href="{{ page.doiurl }}">DOI</a>
+    <a href="{{ page.blogurl }}">论文导读</a>
   </div>
 </div>
 

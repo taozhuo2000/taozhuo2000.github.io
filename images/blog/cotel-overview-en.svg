@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">COTEL conceptual overview</title>
+  <desc id="desc">An original diagram showing point supervision, frame-level temporal consistency learning, segment-level temporal consistency learning, bidirectional cross-consistency guidance, and temporal boundary output.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f9fbff"/>
+      <stop offset="1" stop-color="#f4f8f2"/>
+    </linearGradient>
+    <linearGradient id="moment" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#0f766e"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#223a56" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#50697d"/>
+    </marker>
+    <style>
+      .font { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .label { fill: #183349; font-size: 23px; font-weight: 750; }
+      .small { fill: #527084; font-size: 17px; }
+      .tiny { fill: #6b8292; font-size: 14px; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="675" rx="34" fill="url(#bg)"/>
+  <circle cx="1135" cy="65" r="115" fill="#e6def8" opacity="0.62"/>
+  <circle cx="40" cy="620" r="135" fill="#dcefe8" opacity="0.65"/>
+
+  <g class="font">
+    <text x="58" y="68" fill="#102f43" font-size="38" font-weight="800">COTEL</text>
+    <text x="58" y="101" fill="#547286" font-size="20">Collaborative temporal consistency learning from a single annotated point</text>
+    <rect x="985" y="53" width="157" height="40" rx="20" fill="#ffffff" stroke="#c9d4de"/>
+    <text x="1064" y="79" text-anchor="middle" fill="#435f73" font-size="16" font-weight="700">CONCEPT MAP</text>
+
+    <g filter="url(#shadow)">
+      <rect x="48" y="155" width="208" height="365" rx="24" fill="#ffffff" stroke="#d7e2e8"/>
+    </g>
+    <text x="152" y="191" text-anchor="middle" class="label">Weak supervision</text>
+
+    <rect x="72" y="220" width="160" height="92" rx="14" fill="#edf2f8" stroke="#c3d2de"/>
+    <rect x="84" y="234" width="31" height="64" rx="5" fill="#a6bdcf"/>
+    <rect x="120" y="234" width="31" height="64" rx="5" fill="#668fa8"/>
+    <rect x="156" y="234" width="31" height="64" rx="5" fill="#3b7489"/>
+    <rect x="192" y="234" width="28" height="64" rx="5" fill="#b9cad6"/>
+    <text x="152" y="336" text-anchor="middle" class="small" font-weight="700">Video + sentence</text>
+
+    <path d="M82 390 H222" stroke="#91a5b3" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="145" cy="390" r="12" fill="#ef8a17" stroke="#ffffff" stroke-width="4"/>
+    <path d="M145 368 V350" stroke="#ef8a17" stroke-width="3"/>
+    <text x="145" y="432" text-anchor="middle" fill="#c56a08" font-size="18" font-weight="800">ONE POINT</text>
+    <text x="152" y="466" text-anchor="middle" class="tiny">No start/end boundary label</text>
+
+    <path d="M264 337 H303" stroke="#50697d" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)">
+      <rect x="306" y="228" width="148" height="218" rx="22" fill="#ffffff" stroke="#d7e2e8"/>
+    </g>
+    <text x="380" y="268" text-anchor="middle" class="label">
+      <tspan x="380">Multimodal</tspan>
+      <tspan x="380" dy="27">interaction</tspan>
+    </text>
+    <circle cx="350" cy="345" r="24" fill="#d8e5f5"/>
+    <circle cx="410" cy="345" r="24" fill="#d9efe8"/>
+    <path d="M372 345 H388" stroke="#50697d" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M350 382 C350 416 410 416 410 382" fill="none" stroke="#7c94a6" stroke-width="3"/>
+    <text x="350" y="351" text-anchor="middle" fill="#3c6fa5" font-size="16" font-weight="800">V</text>
+    <text x="410" y="351" text-anchor="middle" fill="#0f766e" font-size="16" font-weight="800">T</text>
+    <text x="380" y="428" text-anchor="middle" class="tiny">Shared video–text features</text>
+
+    <path d="M462 291 H496" stroke="#50697d" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M462 390 H496" stroke="#50697d" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)">
+      <rect x="500" y="145" width="340" height="150" rx="22" fill="#f0ebff" stroke="#c8b6ef"/>
+    </g>
+    <circle cx="535" cy="179" r="14" fill="#7c3aed"/>
+    <text x="565" y="186" fill="#6c2bd9" font-size="17" font-weight="800">FRAME LEVEL</text>
+    <text x="520" y="226" class="label">Temporal consistency learning</text>
+    <path d="M525 258 C545 235 565 276 585 248 S625 273 645 245 S685 270 705 238 S745 262 770 244 S800 255 815 239" fill="none" stroke="#7c3aed" stroke-width="6" stroke-linecap="round"/>
+    <text x="670" y="282" text-anchor="middle" class="tiny">Fine-grained frame saliency scores</text>
+
+    <g filter="url(#shadow)">
+      <rect x="500" y="374" width="340" height="150" rx="22" fill="#e9f7f3" stroke="#acd8cd"/>
+    </g>
+    <circle cx="535" cy="408" r="14" fill="#0f766e"/>
+    <text x="565" y="415" fill="#0f766e" font-size="17" font-weight="800">SEGMENT LEVEL</text>
+    <text x="520" y="455" class="label">Temporal consistency learning</text>
+    <rect x="528" y="483" width="86" height="18" rx="9" fill="#b9ddd4"/>
+    <rect x="625" y="483" width="128" height="18" rx="9" fill="#4b9b8c"/>
+    <rect x="764" y="483" width="48" height="18" rx="9" fill="#cde7e1"/>
+    <text x="670" y="516" text-anchor="middle" class="tiny">Sentence–proposal matching scores</text>
+
+    <path d="M565 306 C510 326 510 345 565 363" fill="none" stroke="#7c3aed" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="477" y="318" width="162" height="30" rx="15" fill="#ffffff" stroke="#c9b7eb"/>
+    <text x="558" y="338" text-anchor="middle" fill="#6d34c8" font-size="14" font-weight="700">Frame guidance</text>
+
+    <path d="M775 363 C830 345 830 326 775 307" fill="none" stroke="#0f766e" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="704" y="318" width="166" height="30" rx="15" fill="#ffffff" stroke="#aad7cc"/>
+    <text x="787" y="338" text-anchor="middle" fill="#0f766e" font-size="14" font-weight="700">Segment guidance</text>
+
+    <rect x="500" y="552" width="340" height="64" rx="20" fill="#fff5e6" stroke="#ecd09f"/>
+    <text x="670" y="579" text-anchor="middle" fill="#9a620e" font-size="15" font-weight="800">HIERARCHICAL CONTRASTIVE ALIGNMENT</text>
+    <text x="670" y="602" text-anchor="middle" fill="#806740" font-size="14">Within-video positives + cross-video negatives</text>
+    <path d="M670 546 V526" stroke="#b37a22" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <path d="M850 337 H912" stroke="#50697d" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)">
+      <rect x="916" y="205" width="236" height="290" rx="24" fill="#ffffff" stroke="#d7e2e8"/>
+    </g>
+    <text x="1034" y="245" text-anchor="middle" class="label">Complete moment</text>
+    <text x="1034" y="273" text-anchor="middle" class="tiny">Recovered from collaborative evidence</text>
+
+    <rect x="949" y="302" width="170" height="86" rx="15" fill="#eef2f5" stroke="#cbd8df"/>
+    <rect x="961" y="315" width="34" height="60" rx="5" fill="#bacbd5"/>
+    <rect x="1001" y="315" width="34" height="60" rx="5" fill="#648d9d"/>
+    <rect x="1041" y="315" width="34" height="60" rx="5" fill="#377480"/>
+    <rect x="1081" y="315" width="26" height="60" rx="5" fill="#acc2cd"/>
+
+    <path d="M955 427 H1114" stroke="#879ca9" stroke-width="5" stroke-linecap="round"/>
+    <path d="M989 427 H1080" stroke="url(#moment)" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="989" cy="427" r="8" fill="#7c3aed"/>
+    <circle cx="1080" cy="427" r="8" fill="#0f766e"/>
+    <text x="989" y="461" text-anchor="middle" class="tiny">start</text>
+    <text x="1080" y="461" text-anchor="middle" class="tiny">end</text>
+
+    <text x="600" y="650" text-anchor="middle" class="tiny">Original explanatory graphic · not an experimental result figure</text>
+  </g>
+</svg>

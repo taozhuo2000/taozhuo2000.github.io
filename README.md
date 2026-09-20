@@ -30,7 +30,7 @@ Then open <http://127.0.0.1:4000>.
 
 Publication cards are generated from `_publications/`. Use `selected: true` to feature a paper on the homepage, `venue_short` for its venue badge, and `teaser` / `teaser_alt` for its conceptual figure. Keep each English and Chinese record paired. Only add `codeurl` when a public code release exists.
 
-After changing JavaScript in `assets/js/_main.js`, run `npm run build:js` to regenerate the committed browser bundle. Build the site with `bundle exec jekyll build`. Add `mathjax: true` to a page's front matter if it needs mathematical typesetting; the homepage does not load MathJax.
+After changing JavaScript in `assets/js/_main.js`, run `npm run build:js` to regenerate the committed browser bundle. Validate the published build with `JEKYLL_ENV=production bundle exec jekyll build --safe`, which enables the same HTML compression used by GitHub Pages. Inline scripts must use block comments because compression removes line breaks. Add `mathjax: true` to a page's front matter if it needs mathematical typesetting; the homepage does not load MathJax.
 
 For browser regression checks, run `node scripts/check-site.mjs http://127.0.0.1:4000` against a running preview, with Playwright and Chrome available. Set `PLAYWRIGHT_MODULE` to an existing Playwright package path if it is not installed locally. The check covers both languages, responsive layouts, local links, navigation, themes, and operation without JavaScript.
 

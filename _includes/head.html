@@ -16,7 +16,7 @@
     try {
       preference = window.localStorage.getItem('theme');
     } catch (error) {
-      // The page still follows the OS theme when storage is unavailable.
+      /* The page still follows the OS theme when storage is unavailable. */
     }
     var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (preference === 'dark' || (preference !== 'light' && systemDark)) {

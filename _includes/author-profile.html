@@ -18,10 +18,12 @@
 <div itemscope itemtype="http://schema.org/Person">
 
   <div class="author__avatar">
-    {% if author.avatar contains "://" %}
+    {% if author.avatar == 'avatar.svg' %}
+      <span class="author-monogram" aria-hidden="true">zt.</span>
+    {% elsif author.avatar contains "://" %}
       <img src="{{ author.avatar }}" alt="{{ display_name }}" fetchpriority="high" />
     {% else %}
-      <img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" class="author__avatar" alt="{{ display_name }}" fetchpriority="high" />
+      <img src="{{ author.avatar | prepend: '/images/' | relative_url }}" class="author__avatar" alt="{{ display_name }}" fetchpriority="high" />
     {% endif %}
   </div>
 

@@ -11,7 +11,8 @@ layout: compress
     {% include head/custom.html %}
   </head>
 
-  <body>
+  <body class="{% if page.layout == 'home' %}home-page{% else %}interior-page{% endif %}">
+    <a class="skip-link" href="#main">{% if page.lang == 'zh' %}跳转到正文{% else %}Skip to content{% endif %}</a>
 
     {% include browser-upgrade.html %}
     {% include masthead.html %}

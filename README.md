@@ -17,13 +17,22 @@ Then open <http://127.0.0.1:4000>.
 
 ## Content
 
-- English and Chinese homepages: `_pages/about.md`, `_pages/about-zh.md`
+- English and Chinese homepage routes: `_pages/about.md`, `_pages/about-zh.md`
+- Bilingual homepage copy: `_data/home.yml`; shared layout: `_layouts/home.html`
+- Homepage research illustration: `_includes/research-visual.html`
+- Shared visual design and responsive styles: `_sass/_refinement.scss`
 - News: `_news/`
 - English and Chinese CV pages: `_pages/cv.md`, `_pages/cv-zh.md`
 - Publications: `_publications/`
 - Blog posts: `_posts/`
 - Site settings: `_config.yml`
 - Navigation: `_data/navigation.yml`
+
+Publication cards are generated from `_publications/`. Use `selected: true` to feature a paper on the homepage, `venue_short` for its venue badge, and `teaser` / `teaser_alt` for its conceptual figure. Keep each English and Chinese record paired. Only add `codeurl` when a public code release exists.
+
+After changing JavaScript in `assets/js/_main.js`, run `npm run build:js` to regenerate the committed browser bundle. Build the site with `bundle exec jekyll build`. Add `mathjax: true` to a page's front matter if it needs mathematical typesetting; the homepage does not load MathJax.
+
+For browser regression checks, run `node scripts/check-site.mjs http://127.0.0.1:4000` against a running preview, with Playwright and Chrome available. Set `PLAYWRIGHT_MODULE` to an existing Playwright package path if it is not installed locally. The check covers both languages, responsive layouts, local links, navigation, themes, and operation without JavaScript.
 
 ## Publishing a bilingual blog post
 

@@ -4,10 +4,11 @@
   {% assign news_items = news_items | slice: 0, include.limit %}
 {% endif %}
 <ul class="news-list">
+  {% assign local_link_prefix = 'href="' | append: site.baseurl | append: '/' %}
   {% for news_item in news_items %}
     <li>
       <span class="news-list__date">{{ news_item.date | date: "%Y-%m" }}</span>
-      <span class="news-list__content">{{ news_item.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</span>
+      <span class="news-list__content">{{ news_item.excerpt | markdownify | remove: "<p>" | remove: "</p>" | replace: 'href="/', local_link_prefix }}</span>
     </li>
   {% endfor %}
 </ul>

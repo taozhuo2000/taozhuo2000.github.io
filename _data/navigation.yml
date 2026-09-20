@@ -2,13 +2,13 @@ main:
   - title: "About"
     url: "/#about-me"
 
-  - title: "News"
-    url: "/news/"
+  - title: "Research"
+    url: "/#research"
 
   - title: "Publications"
     url: "/publications/"
 
-  - title: "Blog"
+  - title: "Writing"
     url: "/blog/"
 
   - title: "CV"
@@ -18,13 +18,13 @@ zh:
   - title: "关于我"
     url: "/zh/#about-me"
 
-  - title: "动态"
-    url: "/zh/news/"
+  - title: "研究"
+    url: "/zh/#research"
 
   - title: "论文"
     url: "/zh/publications/"
 
-  - title: "博客"
+  - title: "写作"
     url: "/zh/blog/"
 
   - title: "简历"

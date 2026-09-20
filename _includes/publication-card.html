@@ -1,14 +1,30 @@
 {% assign card_lang = include.lang | default: page.lang | default: site.default_locale %}
-<article class="publication-card">
-  <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-  {% if post.authors %}<p class="publication-authors">{{ post.authors }}</p>{% endif %}
-  <p class="publication-venue">{{ post.venue }}, {{ post.date | date: "%Y" }}{% if post.note %} · {{ post.note }}{% endif %}</p>
-  {% if post.summary %}<div class="publication-summary">{{ post.summary | markdownify }}</div>{% endif %}
-  <div class="publication-links">
-    <a href="{{ post.url | relative_url }}">{% if card_lang == 'zh' %}详情{% else %}Details{% endif %}</a>
-    {% if post.paperurl %}<a href="{{ post.paperurl }}">{% if card_lang == 'zh' %}论文{% else %}Paper{% endif %}</a>{% endif %}
-    {% if post.doiurl %}<a href="{{ post.doiurl }}">DOI</a>{% endif %}
-    {% if post.blogurl %}<a href="{{ post.blogurl | relative_url }}">{% if card_lang == 'zh' %}论文导读{% else %}Research note{% endif %}</a>{% endif %}
-    {% if post.codeurl %}<a href="{{ post.codeurl }}">Code</a>{% endif %}
+{% assign publication = include.post | default: post %}
+<article class="publication-card{% if publication.teaser %} publication-card--illustrated{% endif %}">
+  {% if publication.teaser %}
+    <a class="publication-visual" href="{{ publication.url | relative_url }}" tabindex="-1" aria-hidden="true">
+      <img src="{{ publication.teaser | relative_url }}" alt="" width="1200" height="675" loading="lazy" decoding="async">
+      {% if publication.method %}<span class="publication-visual-label">{{ publication.method }}</span>{% endif %}
+    </a>
+  {% endif %}
+  <div class="publication-content">
+    <div class="publication-meta">
+      <span class="publication-venue-badge" title="{{ publication.venue | escape }}">{{ publication.venue_short | default: publication.venue }} {{ publication.date | date: "%Y" }}</span>
+      {% if publication.first_author %}
+        <span class="publication-contribution">{% if card_lang == 'zh' %}第一作者{% else %}First author{% endif %}</span>
+      {% elsif publication.equal_contribution %}
+        <span class="publication-contribution">{% if card_lang == 'zh' %}共同一作{% else %}Equal contribution{% endif %}</span>
+      {% endif %}
+    </div>
+    <h3 class="publication-title"><a href="{{ publication.url | relative_url }}">{{ publication.title }}</a></h3>
+    {% if publication.authors %}<p class="publication-authors">{{ publication.authors }}</p>{% endif %}
+    {% if publication.summary %}<div class="publication-summary">{{ publication.summary | markdownify }}</div>{% endif %}
+    <div class="publication-links">
+      {% if publication.paperurl %}<a href="{{ publication.paperurl }}">{% if card_lang == 'zh' %}论文{% else %}Paper{% endif %}<span aria-hidden="true"> ↗</span></a>{% endif %}
+      {% if publication.codeurl %}<a href="{{ publication.codeurl }}">{% if card_lang == 'zh' %}代码{% else %}Code{% endif %}<span aria-hidden="true"> ↗</span></a>{% endif %}
+      {% if publication.blogurl %}<a href="{{ publication.blogurl | relative_url }}">{% if card_lang == 'zh' %}论文导读{% else %}Research note{% endif %}<span aria-hidden="true"> →</span></a>{% endif %}
+      {% if publication.doiurl and publication.doiurl != publication.paperurl %}<a href="{{ publication.doiurl }}">DOI<span aria-hidden="true"> ↗</span></a>{% endif %}
+      <a class="publication-detail-link" href="{{ publication.url | relative_url }}">{% if card_lang == 'zh' %}详情{% else %}Details{% endif %}<span aria-hidden="true"> →</span></a>
+    </div>
   </div>
 </article>

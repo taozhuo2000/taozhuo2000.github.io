@@ -9,45 +9,94 @@
 const PLOTLY_URL = "https://cdn.jsdelivr.net/npm/plotly.js@3.6.0/dist/plotly.min.js";
 const MERMAID_URL = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
 
-// Detect OS/browser preference
-const browserPref = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const systemTheme = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+let themePreference = readThemePreference();
+
+function readThemePreference() {
+  try {
+    const storedTheme = window.localStorage.getItem('theme');
+    return storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : 'system';
+  } catch (error) {
+    return 'system';
+  }
+}
 
 // Determine the computed theme, which can be "dark" or "light".
 function determineComputedTheme() {
-  // Determine the expected state of the theme toggle, which can be "dark", "light", or default "system"
-  let themeSetting = localStorage.getItem("theme");
-  themeSetting = (themeSetting != "dark" && themeSetting != "light" && themeSetting != "system") ? "system" : themeSetting;
-
-  // Return the setting if set, or use the browser preference
-  if (themeSetting != "system") {
-    return themeSetting;
-  }
-  return browserPref ? "dark" : "light";
+  return themePreference === 'system'
+    ? (systemTheme && systemTheme.matches ? 'dark' : 'light')
+    : themePreference;
 }
 
 // Set the theme on page load or when explicitly called
 function setTheme(theme) {
-  const use_theme = theme ||
-    localStorage.getItem("theme") ||
-    $("html").attr("data-theme") ||
-    browserPref;
-
-  if (use_theme === "dark") {
-    $("html").attr("data-theme", "dark");
-    $("#theme-icon").removeClass("fa-sun").addClass("fa-moon");
-  } else if (use_theme === "light") {
-    $("html").removeAttr("data-theme");
-    $("#theme-icon").removeClass("fa-moon").addClass("fa-sun");
+  const useDark = (theme || determineComputedTheme()) === 'dark';
+  const root = document.documentElement;
+  if (useDark) {
+    root.setAttribute('data-theme', 'dark');
+  } else {
+    root.removeAttribute('data-theme');
   }
+  const button = document.getElementById('theme-toggle');
+  if (button) button.setAttribute('aria-pressed', String(useDark));
 }
 
 // Toggle the theme manually
 function toggleTheme() {
-  const current_theme = $("html").attr("data-theme");
-  const new_theme = current_theme === "dark" ? "light" : "dark";
-  localStorage.setItem("theme", new_theme);
-  setTheme(new_theme);
+  themePreference = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  try {
+    window.localStorage.setItem('theme', themePreference);
+  } catch (error) {
+    // Keep the choice for this page even when browser storage is blocked.
+  }
+  setTheme();
   redrawPlotly();
+}
+
+function initializeNavigation() {
+  const navigation = document.querySelector('.site-navigation');
+  if (!navigation) return;
+  const toggle = navigation.querySelector('.site-menu-toggle');
+  const menu = document.getElementById('site-menu');
+  if (!toggle || !menu) return;
+
+  function setOpen(open, restoreFocus) {
+    navigation.classList.toggle('is-open', open);
+    toggle.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? toggle.dataset.closeLabel : toggle.dataset.openLabel);
+    if (restoreFocus) toggle.focus();
+  }
+
+  toggle.addEventListener('click', function () {
+    const willOpen = toggle.getAttribute('aria-expanded') !== 'true';
+    setOpen(willOpen);
+    // The collapsed list precedes the compact controls in the desktop layout.
+    // Start at its first link so keyboard users can continue through the menu.
+    const firstLink = menu.querySelector('a');
+    if (willOpen && firstLink) firstLink.focus();
+  });
+  menu.addEventListener('click', function (event) {
+    if (event.target.closest('a')) setOpen(false);
+  });
+  document.addEventListener('click', function (event) {
+    if (!navigation.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false, navigation.contains(document.activeElement));
+    }
+  });
+  navigation.addEventListener('focusout', function (event) {
+    if (event.relatedTarget && !navigation.contains(event.relatedTarget)) setOpen(false);
+  });
+  if (window.matchMedia) {
+    const mobile = window.matchMedia('(max-width: 760px)');
+    const closeOnResize = function () { setOpen(false); };
+    if (mobile.addEventListener) mobile.addEventListener('change', closeOnResize);
+    else if (mobile.addListener) mobile.addListener(closeOnResize);
+  }
+  navigation.classList.add('navigation-ready');
 }
 
 // Defer the loading of Mermaid to only if there is a field on the page to be rendered
@@ -116,12 +165,14 @@ if (plotlyElements.length > 0) {
 }
 
 function redrawPlotly() {
+  if (typeof Plotly === 'undefined') return;
   plotlyElements.forEach(function(elem) {
     // Parse the Plotly JSON data
     let jsonData = JSON.parse(elem.textContent);
 
     // Get the Plotly node
     let chartElement = $(elem).parent().next().get(0);
+    if (!chartElement) return;
 
     // Set the theme for the plot and render it
     const theme = (determineComputedTheme() === "dark") ? plotlyDarkLayout : plotlyLightLayout;
@@ -141,19 +192,29 @@ function redrawPlotly() {
 $(document).ready(function () {
   // SCSS SETTINGS - These should be the same as the settings in the relevant files
   const scssLarge = 925;          // pixels, from /_sass/_themes.scss
-  const scssMastheadHeight = 70;  // pixels, from the current theme (e.g., /_sass/theme/_default.scss)
-
   // If the user hasn't chosen a theme, follow the OS preference
   setTheme();
-  window.matchMedia('(prefers-color-scheme: dark)')
-        .addEventListener("change", (e) => {
-          if (!localStorage.getItem("theme")) {
-            setTheme(e.matches ? "dark" : "light");
-          }
-        });
+  if (systemTheme) {
+    const syncSystemTheme = function () {
+      if (themePreference === 'system') {
+        setTheme();
+        redrawPlotly();
+      }
+    };
+    if (systemTheme.addEventListener) systemTheme.addEventListener('change', syncSystemTheme);
+    else if (systemTheme.addListener) systemTheme.addListener(syncSystemTheme);
+  }
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'theme' || event.key === null) {
+      themePreference = readThemePreference();
+      setTheme();
+      redrawPlotly();
+    }
+  });
 
   // Enable the theme toggle
   $('#theme-toggle').on('click', toggleTheme);
+  initializeNavigation();
 
   // Enable the sticky footer
   var bumpIt = function () {

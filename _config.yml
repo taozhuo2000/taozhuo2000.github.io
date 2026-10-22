@@ -15,8 +15,8 @@ title                    : "Zhuo Tao"
 title_zh                 : "陶卓"
 title_separator          : "-"
 name                     : &name "Zhuo Tao"
-description              : &description "Zhuo Tao's academic homepage: multimodal learning, large language models, agents, reinforcement learning, and vision-language models."
-description_zh           : "陶卓的学术个人主页，研究方向包括大语言模型、智能体、强化学习、多模态学习与视觉语言模型。"
+description              : &description "Academic homepage of Zhuo Tao, a Ph.D. student at ICT, CAS researching knowledge-based visual question answering, video temporal localization, and multimodal agents."
+description_zh           : "陶卓的学术个人主页，研究方向包括知识型视觉问答、视频时序定位与多模态智能体。"
 url                      : https://taozhuo2000.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -31,8 +31,8 @@ author:
   name             : "Zhuo Tao"
   name_zh          : "陶卓"
   pronouns         : # example: "she/her"  
-  bio              : "Ph.D. Student | Multimodal Learning, LLMs, and Agents"
-  bio_zh           : "博士研究生｜多模态学习、大语言模型与智能体"
+  bio              : "Ph.D. Student | Multimodal Reasoning & Video Understanding"
+  bio_zh           : "博士研究生｜多模态推理与视频理解"
   location         : "Beijing, China"
   location_zh      : "中国，北京"
   employer         : "ICT, Chinese Academy of Sciences"
@@ -153,8 +153,8 @@ facebook:
   app_id                 :
   publisher              :
 og_image                 :  # Social media default site image
-og_description           : "Academic homepage of Zhuo Tao (陶卓), Ph.D. student at ICT, Chinese Academy of Sciences."
-og_description_zh        : "陶卓的学术个人主页，中国科学院计算技术研究所计算机科学与技术专业直博生。"
+og_description           : "Zhuo Tao researches multimodal reasoning grounded in visual evidence, with work in knowledge-based visual question answering and video temporal localization."
+og_description_zh        : "陶卓研究以视觉证据为基础的多模态推理，已发表工作涵盖知识型视觉问答与视频时序定位。"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:

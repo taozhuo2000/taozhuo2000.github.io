@@ -4,6 +4,8 @@ date: 2026-07-01
 lang: en
 permalink: /news/2026-07-tmm-paper/
 alternate_url: /zh/news/2026-07-tmm-paper/
+summary: "DQR-DETR published in IEEE Transactions on Multimedia."
+target_url: /publication/2026-dqr-detr/
 excerpt: '🎉 Our paper "[Generalizing Beyond Patterns: Dynamic Moment Query Recalibrating for Out-of-Distribution Video Temporal Localization](/publication/2026-dqr-detr/)" is available in IEEE Transactions on Multimedia.'
 ---
 

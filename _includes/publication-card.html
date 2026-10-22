@@ -15,6 +15,7 @@
       {% elsif publication.equal_contribution %}
         <span class="publication-contribution">{% if card_lang == 'zh' %}共同一作{% else %}Equal contribution{% endif %}</span>
       {% endif %}
+      {% if publication.research_area %}<span class="publication-area">{{ publication.research_area }}</span>{% endif %}
     </div>
     <h3 class="publication-title"><a href="{{ publication.url | relative_url }}">{{ publication.title }}</a></h3>
     {% if publication.authors %}<p class="publication-authors">{{ publication.authors }}</p>{% endif %}
@@ -24,6 +25,7 @@
       {% if publication.codeurl %}<a href="{{ publication.codeurl }}">{% if card_lang == 'zh' %}代码{% else %}Code{% endif %}<span aria-hidden="true"> ↗</span></a>{% endif %}
       {% if publication.blogurl %}<a href="{{ publication.blogurl | relative_url }}">{% if card_lang == 'zh' %}论文导读{% else %}Research note{% endif %}<span aria-hidden="true"> →</span></a>{% endif %}
       {% if publication.doiurl and publication.doiurl != publication.paperurl %}<a href="{{ publication.doiurl }}">DOI<span aria-hidden="true"> ↗</span></a>{% endif %}
+      {% if publication.dblpurl %}<a href="{{ publication.dblpurl }}">DBLP<span aria-hidden="true"> ↗</span></a>{% endif %}
       <a class="publication-detail-link" href="{{ publication.url | relative_url }}">{% if card_lang == 'zh' %}详情{% else %}Details{% endif %}<span aria-hidden="true"> →</span></a>
     </div>
   </div>

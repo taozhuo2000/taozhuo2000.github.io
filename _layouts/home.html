@@ -4,6 +4,8 @@ layout: default
 {% assign home = site.data.home[page.lang] %}
 {% assign locale_prefix = '' %}
 {% if page.lang == 'zh' %}{% assign locale_prefix = '/zh' %}{% endif %}
+{% assign latest_news_items = site.news | where: "lang", page.lang | sort: "date" | reverse %}
+{% assign latest_news = latest_news_items | first %}
 <main id="main" class="home-main">
   <section class="home-hero" id="about-me" aria-labelledby="profile-name">
     <div class="hero-copy">
@@ -19,21 +21,24 @@ layout: default
       </div>
       <div class="hero-social" aria-label="{% if page.lang == 'zh' %}学术链接{% else %}Academic profiles{% endif %}">
         <a href="{{ site.author.googlescholar }}">Google Scholar <span aria-hidden="true">↗</span></a>
+        <a href="{{ site.author.orcid }}">ORCID <span aria-hidden="true">↗</span></a>
         <a href="https://github.com/{{ site.author.github }}">GitHub <span aria-hidden="true">↗</span></a>
         <a href="{{ locale_prefix | append: '/cv/' | relative_url }}">{{ home.cv }} <span aria-hidden="true">↗</span></a>
       </div>
     </div>
-    <figure class="research-visual">
-      <div class="research-visual__top"><span>{{ home.diagram_label }}</span><span aria-hidden="true">FIG. 01</span></div>
-      {% include research-visual.html %}
-      <figcaption><strong>{{ home.diagram_caption }}</strong><span>{{ home.diagram_footnote }}</span></figcaption>
-    </figure>
   </section>
+  {% if latest_news %}
   <div class="latest-strip">
-    <span class="eyebrow">{{ home.latest }}</span><span class="latest-strip__date">2026.07</span>
-    <a class="latest-strip__item" href="{{ home.latest_url | relative_url }}">{{ home.latest_text }}</a>
+    <span class="eyebrow">{{ home.latest }}</span>
+    <time class="latest-strip__date" datetime="{{ latest_news.date | date_to_xmlschema }}">{{ latest_news.date | date: "%Y.%m" }}</time>
+    {% if latest_news.summary and latest_news.target_url %}
+      <a class="latest-strip__item" href="{{ latest_news.target_url | relative_url }}">{{ latest_news.summary }}</a>
+    {% else %}
+      <div class="latest-strip__item">{{ latest_news.excerpt | markdownify }}</div>
+    {% endif %}
     <a class="text-link" href="{{ locale_prefix | append: '/news/' | relative_url }}">{{ home.news_link }} <span aria-hidden="true">↗</span></a>
   </div>
+  {% endif %}
   <section class="home-section" id="publications" aria-labelledby="publications-heading">
     <div class="section-heading">
       <div><p class="eyebrow">{{ home.work_eyebrow }}</p><h2 id="publications-heading">{{ home.work_title }}</h2><p class="section-description">{{ home.work_description }}</p></div>

@@ -11,6 +11,7 @@ date: 2025-06-10
 venue: "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
 venue_short: "CVPR"
 method: "QACap"
+research_area: "视觉推理"
 teaser: "/images/blog/qacap-overview-zh.svg"
 teaser_alt: "QACap 概念示意：提取与问题相关的视觉证据，再交由大语言模型完成知识推理。"
 authors: 'Zhen Yang*, <strong>Zhuo Tao*</strong>, Qi Chen, Liang Li, Yuankai Qi, Anton van den Hengel, and Qingming Huang'
@@ -18,6 +19,7 @@ note: "* 共同一作"
 summary: "以问题感知图像描述提取相关视觉证据，为大语言模型的知识推理提供清晰的视觉接口。"
 paperurl: "https://openaccess.thecvf.com/content/CVPR2025/papers/Yang_Separation_of_Powers_On_Segregating_Knowledge_from_Observation_in_LLM-enabled_CVPR_2025_paper.pdf"
 doiurl: "https://doi.org/10.1109/CVPR52734.2025.02305"
+dblpurl: "https://dblp.org/rec/conf/cvpr/YangT00QHH25"
 blogurl: "/zh/blog/qacap-explained/"
 citation: 'Zhen Yang*, <strong>Zhuo Tao*</strong>, Qi Chen, Liang Li, Yuankai Qi, Anton van den Hengel, and Qingming Huang. &quot;Separation of Powers: On Segregating Knowledge from Observation in LLM-enabled Knowledge-based Visual Question Answering.&quot; <i>CVPR</i>, 2025.'
 ---
@@ -28,6 +30,7 @@ citation: 'Zhen Yang*, <strong>Zhuo Tao*</strong>, Qi Chen, Liang Li, Yuankai Qi
   <div class="publication-links">
     <a href="{{ page.paperurl }}">论文</a>
     {% if page.doiurl != page.paperurl %}<a href="{{ page.doiurl }}">DOI</a>{% endif %}
+    <a href="{{ page.dblpurl }}">DBLP</a>
     <a href="{{ page.blogurl | relative_url }}">论文导读</a>
   </div>
 </div>

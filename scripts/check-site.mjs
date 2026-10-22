@@ -66,6 +66,10 @@ try {
       check(metrics.brokenImages.length === 0, `${label} broken images`, metrics.brokenImages.join(', '));
       check(metrics.emptyLinks.length === 0, `${label} unnamed links`, metrics.emptyLinks.join(', '));
 
+      const dblpLinks = await page.locator('a[href*="dblp.org"]').evaluateAll(elements => elements.map(element => element.href));
+      check(dblpLinks.length === 3, `${label} selected publications expose three DBLP records`, dblpLinks.join(', '));
+      check(dblpLinks.every(href => new URL(href).pathname.startsWith('/rec/')), `${label} DBLP links target publication records`, dblpLinks.join(', '));
+
       if (width <= 760) {
         const menu = page.locator('#site-menu');
         const toggle = page.locator('.site-menu-toggle');

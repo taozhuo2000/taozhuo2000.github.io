@@ -4,6 +4,8 @@ date: 2026-04-07
 lang: zh
 permalink: /zh/news/2026-04-ijcv-paper/
 alternate_url: /news/2026-04-ijcv-paper/
+summary: "COTEL 发表于 International Journal of Computer Vision。"
+target_url: /zh/publication/2026-cotel/
 excerpt: '🎉 论文“[Collaborative Temporal Consistency Learning for Point-supervised Natural Language Video Localization](/zh/publication/2026-cotel/)”已发表于 International Journal of Computer Vision。'
 ---
 

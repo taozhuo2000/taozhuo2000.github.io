@@ -30,6 +30,8 @@ Then open <http://127.0.0.1:4000>.
 
 Publication cards are generated from `_publications/`. Use `selected: true` to feature a paper on the homepage, `venue_short` for its venue badge, and `teaser` / `teaser_alt` for its conceptual figure. Keep each English and Chinese record paired. Only add `codeurl` when a public code release exists.
 
+Before publishing publication metadata, cross-check venue and year against DBLP following the [ARIS Homepage](https://github.com/wanshuiyin/ARIS-in-AI-Offer/tree/main/skills/homepage-generator) workflow. Keep the `dblpurl` field paired across English and Chinese publication records so readers can inspect the source record directly. Only expose an author-level DBLP link after DBLP assigns a person-specific bibliography; a disambiguation page must not be used as an identity profile.
+
 After changing JavaScript in `assets/js/_main.js`, run `npm run build:js` to regenerate the committed browser bundle. Validate the published build with `JEKYLL_ENV=production bundle exec jekyll build --safe`, which enables the same HTML compression used by GitHub Pages. Inline scripts must use block comments because compression removes line breaks. Add `mathjax: true` to a page's front matter if it needs mathematical typesetting; the homepage does not load MathJax.
 
 For browser regression checks, run `node scripts/check-site.mjs http://127.0.0.1:4000` against a running preview, with Playwright and Chrome available. Set `PLAYWRIGHT_MODULE` to an existing Playwright package path if it is not installed locally. The check covers both languages, responsive layouts, local links, navigation, themes, and operation without JavaScript.

@@ -1,5 +1,5 @@
 en:
-  eyebrow: "MULTIMODAL INTELLIGENCE"
+  eyebrow: "MULTIMODAL REASONING · VIDEO UNDERSTANDING"
   name: "Zhuo Tao"
   other_name: "陶卓"
   role: "Ph.D. Student · ICT, Chinese Academy of Sciences"
@@ -7,11 +7,14 @@ en:
   headline_accent: "in visual evidence."
   bio: 'I build multimodal systems that connect visual evidence with language and reasoning. My published work develops question-aware observation for knowledge-based visual question answering, point-supervised video localization, and out-of-distribution temporal localization. I am extending these ideas toward multimodal agents that learn from interaction and feedback.'
   affiliation: 'At the <a href="https://www.ict.ac.cn/">Institute of Computing Technology, CAS</a>, in the Key Laboratory of Intelligent Information Processing. Previously, B.Eng. in Computer Science at Beihang University.'
+  about_title: "About Me"
   explore: "Explore my work"
   contact: "Get in touch"
   cv: "Curriculum vitae"
   latest: "LATEST"
   news_link: "All updates"
+  news_section_title: "Latest News"
+  featured_title: "Featured Publications"
   work_eyebrow: "01 / SELECTED WORK"
   work_title: "Publications"
   work_description: "Visual reasoning and video localization under sparse or shifting supervision."
@@ -63,7 +66,7 @@ en:
   contact_description: "I welcome conversations about visual-language reasoning, video understanding, multimodal agents, and potential collaborations."
   back_to_top: "Back to top ↑"
 zh:
-  eyebrow: "MULTIMODAL INTELLIGENCE / 多模态智能"
+  eyebrow: "MULTIMODAL REASONING · VIDEO UNDERSTANDING"
   name: "陶卓"
   other_name: "Zhuo Tao"
   role: "博士研究生 · 中国科学院计算技术研究所"
@@ -71,11 +74,14 @@ zh:
   headline_accent: "建立在视觉证据之上。"
   bio: "我研究如何让多模态系统把视觉证据与语言、推理相连接。已发表工作聚焦知识型视觉问答中的问题感知观察，以及稀疏监督和分布外场景下的视频时序定位；目前正将这些方法拓展到能从交互与反馈中学习的多模态智能体。"
   affiliation: '就读于<a href="https://www.ict.ac.cn/">中国科学院计算技术研究所</a>，所在实验室为智能信息处理重点实验室。本科毕业于北京航空航天大学计算机科学与技术专业。'
+  about_title: "关于我"
   explore: "查看研究成果"
   contact: "联系我"
   cv: "学术简历"
   latest: "最新动态"
   news_link: "全部动态"
+  news_section_title: "最新动态"
+  featured_title: "代表性论文"
   work_eyebrow: "01 / SELECTED WORK"
   work_title: "代表性论文"
   work_description: "面向稀疏监督与分布变化的视觉推理和视频时序定位。"

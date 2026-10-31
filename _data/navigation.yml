@@ -1,6 +1,9 @@
 main:
   - title: "About"
-    url: "/#about-me"
+    url: "/#about"
+
+  - title: "News"
+    url: "/#news"
 
   - title: "Research"
     url: "/#research"
@@ -16,7 +19,10 @@ main:
 
 zh:
   - title: "关于我"
-    url: "/zh/#about-me"
+    url: "/zh/#about"
+
+  - title: "动态"
+    url: "/zh/#news"
 
   - title: "研究"
     url: "/zh/#research"
